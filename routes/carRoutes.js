@@ -1,0 +1,10 @@
+const router = require('express').Router();
+const controller = require('../controllers/carController');
+const auth = require('../middleware/auth');
+const admin = require('../middleware/admin');
+router.get('/', controller.getCars);
+router.get('/:id', controller.getCarById);
+router.post('/', auth, admin, controller.createCar);
+router.put('/:id', auth, admin, controller.updateCar);
+router.delete('/:id', auth, admin, controller.deleteCar);
+module.exports = router;

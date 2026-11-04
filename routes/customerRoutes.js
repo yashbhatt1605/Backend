@@ -1,0 +1,10 @@
+const router = require('express').Router();
+const controller = require('../controllers/customerController');
+const auth = require('../middleware/auth');
+const admin = require('../middleware/admin');
+router.get('/', auth, admin, controller.getCustomers);
+router.get('/:id', auth, admin, controller.getCustomerById);
+router.post('/', auth, controller.createCustomer);
+router.put('/:id', auth, admin, controller.updateCustomer);
+router.delete('/:id', auth, admin, controller.deleteCustomer);
+module.exports = router;
